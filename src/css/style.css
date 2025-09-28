@@ -28,8 +28,12 @@ body {
     color: var(--neutral-dark);
     line-height: 1.6;
     overflow-x: hidden;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
 }
-
+body.loaded {
+    opacity: 1;
+}
 /* Navegación */
 nav {
     position: fixed;
@@ -40,6 +44,10 @@ nav {
     z-index: 1000;
     box-shadow: var(--shadow-sm);
     transition: all 0.3s ease;
+}
+
+#inicio {
+  scroll-margin-top: 240px; /* ajusta según altura real del navbar */
 }
 
 .nav-container {
@@ -155,7 +163,7 @@ nav {
 .hero-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 6rem;
+    padding: 4rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
@@ -269,10 +277,15 @@ nav {
 }
 
 .robot-3d {
-    position: absolute;
-    top: -80px;
-    right: -320px; /* evita que bloquee clics */
-    z-index: 1;
+    position: fixed;
+    inset: 0;               /* ocupa todo el viewport */
+    width: 120%;
+    height: 110%;
+    z-index: 0;             /* detrás del contenido (ajusta según tu layout) */
+    pointer-events: none;   /* no bloquea clicks en la UI */
+    /* opcional: desplaza/escala visualmente la escena para situar el robot en la esquina */
+    transform: translateX(140px) translateY(-40px) scale(0.9);
+    transform-origin: right center;
 }
 
 /* Sección de características */
@@ -511,6 +524,9 @@ footer {
     header {
         padding: 1rem 0.1rem;
     }
+    .hero {
+    padding-bottom: 1.2rem; /* deja espacio para la flecha */
+    }
     .nav-links {
         display: none;
         position: absolute;
@@ -549,9 +565,13 @@ footer {
         justify-content: center;
     }
     .robot-3d {
-        scale: 0.6;
-        top: -70%;
-        right: 2%;
+    position: absolute;
+    top: -45%;        /* deja de estar pegado arriba */
+    bottom: 150px;    /* lo mandamos hacia abajo */
+    left: 10%;        /* centrado horizontal */
+    transform: translateX(47%) scale(2); /* reducimos tamaño */
+    width: 100%;
+    height: 300px;    /* límite para que no tape todo */
     }
 }
 
