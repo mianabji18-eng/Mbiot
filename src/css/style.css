@@ -76,7 +76,7 @@ nav {
     display: inline-block;
     width: 50px;
     height: 50px;
-    background-image: url("/src/assets/Logo.png");
+    background-image: url("/src/assets/logo2.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -385,7 +385,7 @@ nav {
 
 .tech-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 2rem;
     max-width: 1000px;
     margin: 0 auto;
@@ -408,12 +408,12 @@ nav {
 
 .tech-item h4 {
     color: var(--primary);
-    margin-top: 1rem;
-    font-size: 1.5rem;
+    margin-top: 0;
+    font-size: 1rem;
 }
 
 .tech-item .tech-icon {
-    font-size: 3rem;
+    font-size: 0rem;
     margin-bottom: 1rem;
 }
 
@@ -526,7 +526,26 @@ footer {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+/* 🖥️ Laptops grandes / monitores */
+@media (max-width: 1200px) {
+    .nav-container { 
+        padding: 1rem; 
+    }
+    .hero-container { 
+        padding: 3rem; gap: 2rem; 
+    }
+    .hero-content h1 { 
+        font-size: clamp(2rem, 4vw, 3.5rem); 
+    }
+    .robot-3d { 
+        transform: scale(0.85) translateY(-20px); 
+    }
+    .features-grid, .tech-grid, .footer-container {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 768px) { 
     header {
         padding: 1rem 0.1rem;
     }
@@ -554,7 +573,6 @@ footer {
                     opacity 0.5s ease, 
                     transform 0.5s ease;
     }
-
     .nav-links.active {
         max-height: 500px;   /* suficiente para tu menú */
         opacity: 1;
@@ -587,6 +605,22 @@ footer {
     width: 150%;
     height: 150%;
     transform: translateX(-26%) translateY(-67%) scale(0.7);
+    }
+    .tech-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+    .tech-item { max-width: 180px; padding: 0.9rem; }
+    .tech-icon img { max-width: 70px; }
+
+    .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+    .feature-card { max-width: 200px; padding: 0.7rem; }
+    .feature-icon { max-width: 65px; }
+    .feature-card h3 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+    .feature-card p {
+        font-size: 0.7rem;
     }
 }
 
